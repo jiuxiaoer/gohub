@@ -29,7 +29,7 @@ var internalSMS *SMS
 func NewSMS() *SMS {
 	once.Do(func() {
 		internalSMS = &SMS{
-			Driver: &Aliyun{},
+			Driver: &Tencent{},
 		}
 	})
 
@@ -37,5 +37,5 @@ func NewSMS() *SMS {
 }
 
 func (sms *SMS) Send(phone string, message Message) bool {
-	return sms.Driver.Send(phone, message, config.GetStringMapString("sms.aliyun"))
+	return sms.Driver.Send(phone, message, config.GetStringMapString("sms.tencent"))
 }
